@@ -1,12 +1,18 @@
 const express = require('express');
-const connectDB = require('./config/db');
 const path = require('path');
 const cors = require('cors')
 const app = express();
+const mongoose = require('mongoose');
+const keys = require('./config/keys')
 require('./middleware/cache')
 app.use(cors()) 
+
 // Connect Database
-connectDB();
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true, 
+  useFindAndModify: false
+});
 
 // Init Middleware
 app.use(express.json({ extended: false }));
