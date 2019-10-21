@@ -15,3 +15,12 @@ install:
   - npm run build || true
 script:
   - nohup npm run start &
+deploy:
+  provider: heroku
+  api_key:
+    secure: 6fa7366f-09a7-421a-9229-173e23695442
+  app: contact-keeper-v1
+  on:
+    repo: DhanushkumarSivaji/Redis_POC_MERN_stack
+
+
