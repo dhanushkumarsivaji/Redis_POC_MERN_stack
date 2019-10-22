@@ -11,8 +11,6 @@ cache:
   directories:
     - node_modules
     - client/node_modules
-before_install:
-    - sudo service redis-server start --bind 127.0.0.1
 install:
   - npm install
   - npm run build || true
