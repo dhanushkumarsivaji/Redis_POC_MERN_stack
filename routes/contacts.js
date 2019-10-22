@@ -20,6 +20,8 @@ router.get("/", auth, async (req, res) => {
     // client.setex(req.user.id , 3600, JSON.stringify(contacts));
   } catch (err) {
     console.error(err.message);
+
+    
     res.status(500).send("Server Error");
   }
 });
