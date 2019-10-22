@@ -5,6 +5,8 @@ dist: trusty
 services:
   - mongodb
   - redis-server
+before_script:
+  - sudo redis-server /etc/redis/redis.conf --port 6379 --requirepass 'secret'
 env:
   - NODE_ENV=ci PORT=3000
 cache:
