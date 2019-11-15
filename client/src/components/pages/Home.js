@@ -3,7 +3,7 @@ import Contacts from '../contacts/Contacts'
 import ContactForm from '../contacts/ContactForm'
 import ContactFilter from '../contacts/ContactFilter';
 import AuthContext from '../context/auth/authContext'
-
+import Quotes from './Quotes' 
 const Home = () => {
     const authContext = useContext(AuthContext)
 
@@ -13,6 +13,7 @@ const Home = () => {
     },[])
 
     return(
+        <div>
         <div className='grid-2 container'>
             <div>
                 <ContactForm/>
@@ -21,6 +22,8 @@ const Home = () => {
                 <ContactFilter/>
                 <Contacts/>
             </div>
+        </div>
+            <Quotes/>
         </div>
     )
 }

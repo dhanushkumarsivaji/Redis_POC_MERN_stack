@@ -4,11 +4,12 @@ const cors = require('cors')
 const app = express();
 const mongoose = require('mongoose');
 const keys = require('./config/keys')
+require('dotenv').config()
 require('./middleware/cache')
 app.use(cors()) 
 
 // Connect Database
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useCreateIndex: true, 
   useFindAndModify: false
@@ -17,13 +18,15 @@ mongoose.connect(keys.mongoURI, {
 // Init Middleware
 app.use(express.json({ extended: false }));
 
+
 // Define Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contacts', require('./routes/contacts'));
+app.use('/api/quotes',require('./routes/quotes'))
 
 // Serve static assets in production
-if (['production', 'ci'].includes(process.env.NODE_ENV)) {
+if (['production', 'ci','beta'].includes(process.env.NODE_ENV)) {
   // Set static folder
   app.use(express.static('client/build'));
 
